@@ -1,0 +1,11 @@
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import authRouter from "./routers/authRoutes";
+dotenv.config();
+var server = express();
+server.use(cors());
+server.use(express.json());
+server.use(authRouter);
+var port = process.env.PORT || 5000;
+server.listen(port, function () { return console.log("Server run port=".concat(port)); });
