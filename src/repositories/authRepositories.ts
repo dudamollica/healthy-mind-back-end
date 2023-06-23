@@ -1,4 +1,4 @@
-import { prisma } from '../config/database'
+import prisma from '../config/database'
 
 async function findUserByEmail(email): Promise<any> {
     return prisma.users.findFirst({ where: { email } });
@@ -9,12 +9,14 @@ async function findUserById(id): Promise<any> {
 }
 
 
-async function createUser({ name, email, password, image }): Promise<void> {
+async function createUser(name, email, hashPass, image): Promise<any> {
+    console.log(name, email, hashPass, image)
     const user = prisma.users.create({
         data: {
-            name, email, password, photo: image, gender: "Indefinido"
+            name, email, password: hashPass, photo: image, gender: "Indefinido"
         }
     })
+    return user
 }
 
 async function findAll(): Promise<any> {

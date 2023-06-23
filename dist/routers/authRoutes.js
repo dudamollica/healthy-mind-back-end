@@ -1,5 +1,6 @@
 import { Router } from "express";
+import authControllers from "../controllers/authControllers";
 var authRouter = Router();
-authRouter.post("/");
-authRouter.post("/cadastro");
+authRouter.post("/", authControllers.singIn);
+authRouter.post("/cadastro", authControllers.signUp);
 export default authRouter;

@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { PrismaClient } from '@prisma/client';
-export var prisma;
+export var prisma = new PrismaClient();
 export function connectDb() {
     prisma = new PrismaClient();
 }

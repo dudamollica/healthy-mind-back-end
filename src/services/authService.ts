@@ -8,12 +8,12 @@ async function signUp({ name, email, password, image }) {
   if (userExist) throw new Error;
 
   const hashPass = await bcrypt.hash(password, 10);
-  await authRepositories.createUser({
+  await authRepositories.createUser(
     name,
     email,
-    password : hashPass,
-    image
-  });
+    hashPass,
+    image,
+  );
 }
 
 async function signIn({ email, password }) {
