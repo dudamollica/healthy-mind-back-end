@@ -8,7 +8,8 @@
     "start": "node dist/server.js",
     "build": "tsc",
     "test": "npx jest",
-    "test:migrate:run": "dotenv -e env.test npx prisma migrate dev"
+    "test:migrate:run": "dotenv -e env.test prisma migrate dev",
+    "dev:migrate:run": "dotenv -e env.development prisma migrate dev"
   },
   "keywords": [],
   "author": "",
@@ -23,14 +24,15 @@
     "cors": "^2.8.5",
     "dayjs": "^1.11.8",
     "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.2.1",
     "express": "^4.18.2",
-    "faker": "^6.6.6",
     "http-status": "^1.6.2",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "nodemon": "^2.0.22"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@types/bcrypt": "^5.0.0",
     "@types/dotenv": "^8.2.0",
     "@types/http-status": "^1.1.2",

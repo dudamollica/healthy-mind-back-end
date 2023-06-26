@@ -11,4 +11,5 @@ server.use(express.json());
 server.use(authRouter);
 server.use(registersRouter)
 
+
 export default server
