@@ -10,7 +10,6 @@ async function findUserById(id): Promise<any> {
 
 
 async function createUser(name, email, hashPass, image): Promise<any> {
-    console.log(name, email, hashPass, image)
     const user = prisma.users.create({
         data: {
             name, email, password: hashPass, photo: image, gender: "Indefinido"
@@ -23,6 +22,11 @@ async function findAll(): Promise<any> {
     return prisma.users.findMany();
 }
 
+async function findUserImg(email) {
+    const user = await prisma.users.findFirst({ where: { email } })
+    return user.photo
+}
+
 async function createSession({ userId, token }) {
     // prisma.patient_sessions.upsert({
     //     where: { userId },
@@ -32,5 +36,5 @@ async function createSession({ userId, token }) {
 }
 
 export default {
-    findUserByEmail, findUserById, createUser, findAll, createSession
+    findUserByEmail, findUserById, createUser, findAll, createSession, findUserImg
 }

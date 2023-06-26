@@ -2,12 +2,13 @@ import express, { json } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRouter from "./routers/authRoutes";
+import registersRouter from "./routers/registersRoutes";
 
 dotenv.config();
 const server = express();
 server.use(cors());
 server.use(express.json());
 server.use(authRouter);
+server.use(registersRouter)
 
-const port = process.env.PORT || 5000;
-server.listen(port, () => console.log(`Server run port=${port}`));
+export default server

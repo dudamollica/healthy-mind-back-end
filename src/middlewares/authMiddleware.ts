@@ -15,9 +15,10 @@ async function authValidation(req, res, next) {
     jwt.verify(token, process.env.SECRET_JWT, async (error, decoded) => {
         try {
             if (error) throw new Error
-            const { rows: [user] } = await authRepositories.findUserById(decoded.userId)
+            const user = await authRepositories.findUserById(decoded.userId)
             if (!user) throw new Error;
             res.locals.user = user
+            next()
         } catch (err) {
             next(err)
         }

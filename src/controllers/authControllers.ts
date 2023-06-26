@@ -1,3 +1,4 @@
+import authRepositories from "../repositories/authRepositories";
 import authServices from "../services/authService"
 import httpStatus from "http-status";
 
@@ -15,8 +16,8 @@ async function signUp(req, res) {
     const { email, password} = req.body;
     try {
       const token = await authServices.signIn({ email, password });
-      console.log(token)
-      return res.status(httpStatus.OK).send(token);
+      const image = await authRepositories.findUserImg(email)
+      return res.status(httpStatus.OK).send({token: token, image: image});
     } catch (error) {
       return res.status(httpStatus.UNAUTHORIZED).send({});
     }

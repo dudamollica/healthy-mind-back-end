@@ -10,7 +10,7 @@ datasource db {
 model daily_records {
   id                  Int       @id(map: "daily_records_pk") @default(autoincrement())
   user_id             Int
-  date                DateTime  @db.Date
+  date                String
   time_slept          DateTime? @db.Time(6)
   time_woke_up        DateTime? @db.Time(6)
   total_time_sleeping DateTime? @db.Time(6)
